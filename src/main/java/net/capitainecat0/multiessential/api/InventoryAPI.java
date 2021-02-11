@@ -1,3 +1,7 @@
+/*===========================
+#Code developped by ItsTheSky
+=============================**/
+
 package net.capitainecat0.multiessential.api;
 
 import org.bukkit.Bukkit;
