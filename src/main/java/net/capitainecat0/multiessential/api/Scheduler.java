@@ -1,5 +1,8 @@
-package net.capitainecat0.multiessential.api;
+/*===========================
+#Code developped by ItsTheSky
+=============================**/
 
+package net.capitainecat0.multiessential.api;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
