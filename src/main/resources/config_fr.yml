@@ -1,0 +1,718 @@
+########################################################################################################################
+#         Développé par                            MultiEssential                                 Pour le serveur      #
+#         CapitaineCat0                          Fichier config.yml                                 HallOfGames        #
+########################################################################################################################
+#                                                version 1.15.1                                                        #
+########################################################################################################################
+#  -Discord de support: https://discord.gg/WxcEu7j                                                                     #
+#  -Source SpigotMC du plugin: https://www.spigotmc.org/resources/multiessential.84178/                                #
+#  -GitHub: https://github.com/CapitaineCat0/MultiEssential                                                            #
+#####################################################Variables##########################################################
+#  -{PLAYER} = Personne mentionné lors d'une commande / d'un événement                                                 #
+#  -{SENDER} = Personne qui execute la commande                                                                        #
+#  -{KILLER} = Personne qui tue un joueur / mob                                                                        #
+#  -{LOCATION} = Coordonnées du joueur                                                                                 #
+#  -{GAMEMODE} = Mode de jeu                                                                                           #
+#  -{WORLDNAME} = Nom du monde principal                                                                               #
+#  -{TICKS} = Ticks                                                                                                    #
+########################################################################################################################
+
+messages:
+  #Message envoyé à la console quand une commande est tapé sur celle-ci.
+  console: "Vous devez etre un joueur pour executer cette commande !"
+
+  #Message d'erreur envoyé au joueur qui mentionne un joueur inexistant
+  not_a_player: "&e{PLAYER} &cest introuvable / n'est pas un joueur"
+
+  #Message d'erreur envoyé au joueur quand il essaye de jeter un item spécial au sol
+  drop_item: "&cVous ne pouvez pas jeter cet item au sol"
+
+  #Message envoyé au joueur quand le plugin à été rechargé
+  reloaded: "&aConfigurations du plugin rechargés"
+
+  #Affichage du pseudo quand quelqu'un parle/affichage des préfix suffix dans le tab
+  #Supporte les placeholders de PlaceholderAPI
+  chat_formats:
+    prefix: ""
+    suffix: ""
+    chat_format: "<{PLAYER}> {MESSAGE}"
+
+  #Messages privés
+  private:
+    #Message envoyé à l'envoyeur
+    #Supporte {SENDER} et {PLAYER}
+    sender: "&eVous &d> &a{PLAYER} &r: &b{MESSAGE}"
+
+    #Messageenvoyé au receveur
+    #Supporte {SENDER} et {PLAYER}
+    reciever: "&e{SENDER} &d> &aVous &r: &b{MESSAGE}"
+
+    #Message d'erreur envoyé à l'envoyeur quand il n'y à pas de conversation enregistré
+    error: "&cVous n'avez pas ouvert de discution avec &e{PLAYER}&c!"
+
+  #Message d'erreur envoyé au joueur qui tape la commande whois sans nommer de joueur
+  whois_error: "&cMerci de nommer un joueur"
+
+#Préfix du plugin affiché devant les messages du plugin.
+#Laissez "" pour désactiver.
+prefix: "[&6MultiEssential&r]"
+
+#Nom du monde principal
+#par défaut, il se nomme "world"
+worldname: "world"
+
+#Message affiché quand un joueur tape la commande /pl ou /plugins
+plugins: "&cVous ne pouvez pas visualiser les plugins."
+
+sounds:
+  #Son joué quand l'action se déroule bien
+  request: true
+  #Son joué quand il y à une erreur
+  warn: true
+
+#Activer / désactiver le changement de météo
+enable_weather: false
+
+serverMOTD:
+  enable: true
+  set: "&aServeur personnel utilisant le plugin &6MultiEssential"
+
+tablist:
+  enable: true
+  header: "&aEn-tête du tablist par &6MultiEssential \n &aUtilisant plusieures lignes"
+  footer: "&aEn-Base du tablist par &6MultiEssential \n &aUtilisant plusieures lignes"
+
+########################################################################################################################
+#                                                                                                                      #
+#                                                  Message d'évènements                                                #
+#                                                                                                                      #
+########################################################################################################################
+
+join:
+  #Activer/désactiver les messages d'essentials (joueurs connectés, /list et /me help)
+  join_msg_toggle: true
+
+  #Retire les privilèges d'opérateur
+  #l'ors de la connection.
+  deop: true
+
+  #Change le mode de jeu l'ors de la connection.
+  #(mode survie)
+  change_gamemode: true
+
+  #Messages envoyé lors de la première connection au serveur.
+  first_time:
+
+    #Message envoyé en broadcast au serveur.
+    server: "&e{PLAYER} &aà rejoin le serveur &apour la première fois! Faites lui un bon acceuil."
+
+    #Message envoyé au joueur.
+    player: "&5Bienvenue &e{PLAYER} &5sur notre serveur"
+
+  #Message envoyé en broadcast sur le serveur.
+  server: "&e{PLAYER} à rejoin le serveur"
+
+  #Message envoyé au joueur uniquement.
+  #(pour le désactiver, faites simplement "").
+  player: "&3Bienvenue et bon jeu sur sur notre serveur &b{PLAYER}&3!"
+
+  #Message des joueurs connectés
+  connected_players: "&6Joueurs connectés: &c"
+
+  #Message qui affiche l'aide
+  help_msg: "&6Tapez &c/me &6pour afficher l'aide"
+
+  list:
+    #Message affiché pour afficher l'aide
+    msg: "&6Tapez &c/list &6pour afficher les joueurs en ligne"
+
+    #Liste des joueurs
+    list: "&6Liste des joueurs:"
+
+    #Signe qui désigne les pseudos
+    start_list: "  - &c"
+
+leave:
+  #Message envoyé en broadcast sur le serveur.
+  #(pour le désactiver, faites simplement "").
+  server: "&e{PLAYER} à quitté le serveur"
+
+death:
+  #Message de mort envoyé en broadcast sur le serveur
+  #(pour le désactiver, faites simplement " ").
+  server: "&7{PLAYER} à succombé à ses blessures"
+
+  #Message envoyé au défun.
+  player: "&7Vous êtes mort. Dommage, on vous aimait bien ..."
+
+  killer:
+    #Message de mort envoyé en broadcast sur le serveur
+    #(pour le désactiver, faites simplement " ").
+    server: "&e{PLAYER} &7à été tué par &c{KILLER}"
+    #Message de mort envoyé au tueur
+    player: "&bVous venez de tuer &e{PLAYER}"
+    #Message de mort envoyé à la victime
+  death_by_player: "&dVous avez été tué par &e{KILLER}"
+  #Activer / désactiver les éclairs à la mort d'un joueur
+  toggle_lightning: false
+
+time:
+  #Message envoyé quand la commande /day à été éxécutée
+  day: "&6Heure changée à &c6:00 &6ou &c0 ticks &6sur le monde &c{WORLDNAME}"
+
+  #Message envoyé quand la commande /midday à été éxécutée
+  midday: "&6Heure changée à &c12:00 &6ou &c6000 ticks &6sur le monde &c{WORLDNAME}"
+
+  #Message envoyé quand la commande /night à été éxécutée
+  night: "&6Heure changée à &c18:00 &6ou &c12000 ticks &6sur le monde &c{WORLDNAME}"
+
+  #Message envoyé quand la commande /midnight à été éxécutée
+  midnight: "&6Heure changée à &c0:00 &6ou &c18000 ticks &6sur le monde &c{WORLDNAME}"
+
+  #Message envoyé quand il manque des arguments
+  error: "&cMerci de taper &e/time set <ticks>"
+
+  #Message envoyé quand l'heure à été changé
+  set: "&6Vous avez changé l'heure sur &e{TICKS} &6ticks"
+
+########################################################################################################################
+#                                                                                                                      #
+#                                                      Commandes                                                       #
+#                                                                                                                      #
+########################################################################################################################
+
+#========================================================= Alert ======================================================#
+alert:
+  #Message d'erreur quand il manque des arguments.
+  error: "&cTapez &3/alert&c &3<arguments> &c!"
+
+  #Mise en tête du message d'alerte.
+  anounce: "&8[&4&lAlert&8]"
+
+#======================================================= Broadcast ====================================================#
+bc:
+  #Message d'erreur quand il manque des arguments.
+  error: "&cTapez &3/bc&c &3<arguments> &c!"
+
+#========================================================== CI ========================================================#
+clear:
+  #Message envoyé au joueur qui vide son inventaire.
+  player: "&6Votre inventaire à été vidé"
+
+  other:
+    #Message envoyé à la cible qui perd son inventaire.
+    done: "&6Votre inventaire à été vidé par {SENDER}"
+
+    #Message envoyé au joueur qui éxécute la commande.
+    sender: "&6{PLAYER} à perdu son inventaire"
+
+#======================================================== Economy =====================================================#
+economy:
+  add:
+    #Message sent to player that execute command.
+    sender: "&aYou successfully changed &e{PLAYER}'s &amoney to &e${MONEY}"
+
+    #Message sent to player that have money changed.
+    player: "&aYour money has been set to &e${MONEY} &aby &e{SENDER}"
+
+    #Error message sent when arguments are missing.
+    error: "&cYo must type &e/eco add <player> <value>"
+  set:
+    #Message sent to player that execute command.
+    sender: "&aYou successfully changed &e{PLAYER}'s &amoney to &e${MONEY}"
+
+    #Message sent to player that have money changed.
+    player: "&aYour money has been set to &e${MONEY} &aby &e{SENDER}"
+
+    #Error message sent when arguments are missing.
+    error: "&cYo must type &e/eco set <player> <value>"
+  remove:
+    #Message sent to player that execute command.
+    sender: "&aYou successfully changed &e{PLAYER}'s &amoney to &e${MONEY}"
+
+    #Message sent to player that lost her money.
+    player: "&aYour money has been set to &e${MONEY} &aby &e{SENDER}"
+
+    #Error message sent when arguments are missing.
+    error: "&cYo must type &e/eco remove <player> <value>"
+  reset:
+    #Message sent to player that execute command.
+    sender: "&aYou successfully changed &e{PLAYER}'s &amoney to &e${MONEY}"
+
+    #Message sent to player that have money reseted.
+    player: "&aYour money has been set to &e${MONEY} &aby &e{SENDER}"
+
+    #Error message sent when arguments are missing.
+    error: "&cYo must type &e/eco reset <player>"
+
+#========================================================= Feed =======================================================#
+feed:
+  #Message envoyé quand vous avez déjà été nourris.
+  already: "&6Vous avez déjà été nourris !"
+
+  #Message envoyé quand vous avez été nourris avec succès.
+  done: "&6Vous avez été nourris"
+
+  #Message envoyé au joueur qui en nourris un autre.
+  sender: "&6Vous avez &anourris &e{PLAYER}"
+
+  other:
+    #Message envoyé au joueur qui en nourris un autre mais que la cible n'à pas faim.
+    already: "&e{PLAYER} &6à déjà été nourris !"
+
+    #Message envoyé à la cible quand elle à été nourris par un autre joueur.
+    done: "&6Vous avez été nourris par &e{SENDER}"
+
+#======================================================= fly-mode =====================================================#
+fly:
+  #Message envoyé au joueur qui éxécute la commande.
+  #Actif.
+  active: "&6Fly mode &aactivé"
+
+  #[...] Inactif.
+  inactive: "&6Fly mode &cdésactivé"
+
+  #Message d'erreur envoyé quand le joueur n'est pas opérateur/admin
+  error: "Vous n'avez pas la permission de gérer le fly-mode d'un autre joueur"
+
+  sender:
+    #Message envoyé au joueur qui en soigne un autre.
+    #Actif.
+    active: "&6Fly mode &aactivé &6pour &e{PLAYER}"
+
+    #[...] Inactif.
+    inactive: "&6Fly mode &cdésactivé &6pour &e{PLAYER}"
+
+  other:
+    #Message envoyé à la cible à qui un autre joueur à activé/désactivé le god mode.
+    #Actif.
+    active: "&6Votre Fly mode à été &aactivé &6par &e{SENDER}"
+
+    #[...] Inactif.
+    inactive: "&6Votre Fly mode à été &cdésactivé &6par &e{SENDER}"
+
+#======================================================== Freeze ======================================================#
+freeze:
+  #Message envoyé au joueur qui gele  un autre joueur.
+  sender:
+    #Message envoyé quand le joueur est gelé.
+    frozen: "&6Vous avez gelé &e{PLAYER}&6, il ne peut donc plus bouger !"
+
+    #Message envoyé quand le joueur est libéré.
+    unfrozen: "&6Vous avez libéré &e{PLAYER}&6, il est donc libre de partir"
+
+  #Message envoyé à la personne gelé.
+  target:
+    #Message envoyé au joueur quand il casse un bloc
+    break_block: "&cVous ne pouvez pas casser de blocs en étant gelé!"
+
+    #Message envoyé au joueur quand il pose un block
+    place_block: "&cVous ne pouvez pas placer de blocs en étant gelé!"
+
+    #Message envoyé au joueur quand il jette un item
+    item_drop: "&cVous ne pouvez pas jeter vos items en étant gelé!"
+
+    #Message envoyé au joueur quand il ramasse un item
+    item_pickup: "&cVous ne pouvez pas ramasser d'items en étant gelé!"
+
+    #Message envoyé quand le joueur est gelé.
+    frozen: "&cVous avez été gelé par &e{PLAYER}&c, vous ne pouvez pas bouger !"
+
+    #Message envoyé au joueur quand il essaye de bouger.
+    #/!\ Ne supporte pas les variables {PLAYER} ou {SENDER}!
+    move: "&cVous avez été gelé par un membre du staff, vous ne pouvez pas bouger !"
+
+    #Message envoyé quand le joueur est libéré.
+    unfrozen: "&aVous avez été libéré par &e{SENDER}&a, vous pouvez donc continuer de jouer."
+
+#======================================================== Gamemode ====================================================#
+gamemode:
+  other:
+    #Message envoyé à la cible à qui on à changé son mode de jeu.
+    done: "&6Votre mode de jeu à été mis à jour par &e{SENDER}"
+
+    #Message envoyé au joueur qui à changé le mode de jeu d'un autre joueur.
+    sender: "&6Vous avez changé le mode de jeu de &e{PLAYER} &6en mode {GAMEMODE}"
+
+  #Message d'erreur quand il manque des arguments.
+  error: "&6Merci de taper &c/gm 0/1/2/3 &6pour changer votre mode de jeu"
+
+  #Message envoyé quand le mode de jeu à été changé.
+  general: "&6Votre mode de jeu à été mis à jour en mode {GAMEMODE}"
+
+  #Liste des modes de jeux:
+  survival: "&r[&csurvie&r]"
+  creative: "&r[&ccréatif&r]"
+  adventure: "&r[&caventure&r]"
+  spectator: "&r[&cspectateur&r]"
+
+#======================================================== God-mode ====================================================#
+god:
+  #Message envoyé au joueur qui éxécute la commande.
+  #Actif.
+  active: "&6God mode &aactivé"
+
+  #[...] Inactif.
+  inactive: "&6God mode &cdésactivé"
+
+  sender:
+    #Message envoyé au joueur qui éxécute la commande pour un autre joueur.
+    #Actif.
+    active: "&6God mode &aactivé &6pour &e{PLAYER}"
+
+    #[...] Inactif.
+    inactive: "&6God mode &cdésactivé &6pour &e{PLAYER}"
+
+  other:
+    #Message envoyé à la cible à qui un autre joueur à activé/désactivé le god mode
+    #Actif.
+    active: "&6God mode &aactivé &6par &e{SENDER}"
+
+    #[...] Inactif.
+    inactive: "&6God mode &cdésactivé &6par &e{SENDER}"
+
+#========================================================== Hat =======================================================#
+hat:
+  #Message envoyé au joueur quand il à placé un item sur sa tête
+  done: "&6Vous venez de placer un item sur votre tête"
+
+#========================================================= Heal =======================================================#
+heal:
+  #Message envoyé quand vous avez déjà été soigné.
+  already: "&6Vous avez déjà été soigné !"
+
+  #Message envoyé quand vous avez été soigné avec succès.
+  done: "§6Vous avez été soigné"
+
+  #Message envoyé au joueur qui en soigne un autre.
+  sender: "&6Vous avez &asoigné &e{PLAYER}"
+
+  other:
+    #Message envoyé au joueur qui en soigne un autre mais que la cible n'est pas blessée.
+    already: "&e{PLAYER} &6à déjà été soigné !"
+
+    #Message envoyé à la cible quand elle à été soignée par un autre joueur.
+    done: "&6Vous avez été soigné par &e{SENDER}"
+
+#======================================================== Invsee ======================================================#
+invsee:
+  #Message d'erreur envoyé quand vous tapez uniquement /invsee
+  error: "&6Merci de taper &c/invsee <joueur> &6pour afficher l'inventaire d'un joueur"
+
+  #Message envoyé quand vous ouvrez l'inventaire d'un joueur.
+  done: "&6Vous avez ouvert l'inventaire de &e{PLAYER} &6."
+
+#=================================================== KnockBack-Stick ==================================================#
+kbstick:
+
+  item:
+    #Niveau du knockback (peut être monté à l'infini)
+    level: 50
+    #Nom de l'item
+    displayname: "&eKnockBack stick"
+
+    #/!\ Vous ne pouvez pas encore changer la couleur
+    #de la description car le code couleur de Minecraft
+    #n'à pas encore été traduit pour cette fonction.
+    #Vous pourrez peut-être le faire dans une autre version.
+    lore:
+      - " "
+      - "Bâton magique permettant"
+      - "de d'expulser loin de vous"
+      - "les entitées que vous frappez"
+
+#======================================================= Suicide ======================================================#
+#Message envoyé au joueur qui ce sucide
+suicide: "&eVous vennez de vous sucider"
+
+#===================================================== Lightning ======================================================#
+lightning:
+  #Configurer la distance en blocs pour la frappe des éclairs
+  distance: 200
+
+  item:
+    #Enchanter l'item
+    glowing: true
+    #Nom de l'item
+    displayname: "&eLightning stick"
+
+    #/!\ Vous ne pouvez pas encore changer la couleur
+    #de la description car le code couleur de Minecraft
+    #n'à pas encore été traduit pour cette fonction.
+    #Vous pourrez peut-être le faire dans une autre version.
+    lore:
+      - " "
+      - "Bâton foudroyant permettant"
+      - "de faire tomber un/plusieurs éclairs"
+      - "sur le joueur que vous visez"
+
+#========================================================= Nick =======================================================#
+nick:
+  #Message d'erreur envoyé quand il manque des arguments
+  error: "&cTapez &e/nick <pseudo>"
+
+  #Message envoyé quand le pseudo à été changé
+  set: "&6Votre pseudo à été changé en &c{NICKNAME}"
+
+#===================================================== Teleportation ==================================================#
+teleportation:
+  spawn:
+    #message envoyé quand le spawn est placé.
+    set: "&6Vous avez placé le point de spawn à votre emplacement &r(&c{LOCATION}&r)"
+
+    #Message envoyé quand le joueur est téléporté au spawn.
+    done: "&aVous avez été téléporté au spawn!"
+
+#====================================================== TNT-Stick =====================================================#
+tnt:
+  #Configurer la distance en blocs pour le spawn des tnt's
+  distance: 200
+
+  item:
+    #Enchanter l'item
+    glowing: true
+    #Nom de l'item
+    displayname: "&eTNT Stick"
+
+    #/!\ Vous ne pouvez pas encore changer la couleur
+    #de la description car le code couleur de Minecraft
+    #n'à pas encore été traduit pour cette fonction.
+    #Vous pourrez peut-être le faire dans une autre version.
+    lore:
+      - " "
+      - "Bâton magique permettant"
+      - "de faire apparaître des TNT's"
+      - "qui exploserons là où vous visez"
+
+#======================================================= Trade ========================================================#
+trade:
+  sender:
+    #Message envoyé au joueur qui envoie une requette d'échange à un joueur
+    sent: "&bVous avez envoyé une requette d'échange à &e{PLAYER}"
+
+  reciever:
+    #Messages envoyé au joueur qui reçois la demande d'échange
+    message: "&bVous avez reçu une requette d'échange de &e{SENDER}&b! Tapez &e/trade <yes|accept> &bpour accepter"
+
+  #Message d'erreur envoyé au joueur quand il manque des arguments
+  error: "&cMerci de taper &e/trade <joueur>"
+
+  #Nom de l'inventaire
+  inventory_name: "&bEchange avec un joueur"
+
+  #Message envoyé quand l'échange à été accepté
+  accepted: "&aEchange accepté"
+
+#======================================================= vanish =======================================================#
+vanish:
+  #Message envoyé quand le vanish est activé.
+  enabled: "&7Vanish &aactivé"
+
+  #Message envoyé quand le vanish est désactivé.
+  disabled: "&7Vanish &cdésactivé"
+
+#======================================================== Aide ========================================================#
+msg:
+  #Descriptions du plugin donnés dans le /me ou /mess ou /multie ou /multiess ou /multiessential
+  descriptions:
+    name: "§eNom§8:"
+    author: "§bAuteur§8:"
+    version: "§aVersion§8:"
+    prefix: "§6Préfix§8:"
+    discord: "§3Discord§8:"
+    website: "§eSite§8:"
+
+  #Page d'aide suivante
+  next_page: "&7&lPage suivante &a&l->"
+  #Page d'aide précédente
+  previous_page: "&a&l<- &7&lPage précédente"
+
+  commands:
+    alert:
+      #Message d'aide affiché au /me help
+      command: "&7Envoyer des messages d'alerte aux joueurs"
+      #Message affiché sur la commande quand vous passer la souris dessus
+      hover: "&3Envoyer un message d'alerte"
+    bc:
+      command: "&7Envoyer un message pour l'ensemble des joueurs"
+      hover: "&3Envoyer un message sans votre pseudo"
+    clear:
+      command: "&7Permet de vider l'inventaire d'un joueur"
+      hover: "&3Vider son inventaire"
+    craft:
+      command: "&7Ouvrir l'établi'"
+      hover: "&3Etabli"
+    day:
+      command: "&7Permet de changer l'heure à 6h00"
+      hover: "&3Changer l'heure &7(6h00)"
+    enderchest:
+      command: "&7Permet de voir l'enderchest d'un joueur"
+      hover: "&3Voir son enderchest"
+    feed:
+      command: "&7Permet de nourir un joueur"
+      hover: "&3Se nourir"
+    fly:
+      command: "&7Permet d'&aactiver§7/&cdésactiver&7 le fly mode d'un joueur"
+      hover: "&3Pouvoir voler"
+    freeze:
+      command: "&7Permet de &egeler&7/&edégeler&7 un joueur"
+      hover: "&3Geler un joueur"
+    gamemode:
+      command: "&7Permet de changer son mode de jeu"
+      hover: "&3Changer son mode de jeu"
+    god:
+      command: "&7Permet d'&aactiver&7/&cdésactiver&7 le god mode d'un joueur"
+      hover: "&3Vous rendre invulnérable"
+    hat:
+      command: "&7Permet de placer un item sur votre tête"
+      hover: "&3Placer un item sur votre tête"
+    heal:
+      command: "&7Permet de soigner un joueur"
+      hover: "&3Se soigner"
+    help:
+      command: "&7Vous permet d'afficher le menu d'aide"
+      hover: "&3Afficher l'aide"
+    invsee:
+      command: "&7Permet de visualiser l'inventaire d'un joueur"
+      hover: "&3Voir l'inventaire d'un joueur"
+    kbstick:
+      command: "&7Permet de vous donner le &bKnockBack stick"
+      hover: "&3Obtenir le KnockBack stick"
+    suicide:
+      command: "&7Permet de vous sucider"
+      hover: "&3Se sucider"
+    lightning:
+      command: "&7Vous donne un bâton pouvant invoquer la &efoudre"
+      hover: "&3Foudroyer un joueur"
+    list:
+      command: "&7Permet de visualiser la liste des joueurs connectés"
+      hover: "&3Afficher les joueurs"
+    midday:
+      command: "&7Permet de changer l'heure à 12h00"
+      hover: "&3Changer l'heure &7(12h00)"
+    midnight:
+      command: "&7Permet de changer l'heure à 18h00"
+      hover: "&3Changer l'heure &7(18h00)"
+    msg:
+      command: "&7Envoyer des messages privés à un joueur"
+      hover: "&3Messages privés"
+    night:
+      command: "&7Permet de changer l'heure à 0h00"
+      hover: "&3Changer l'heure &7(0h00)"
+    reload:
+      command: "&7Permet de recharger le fichier config"
+      hover: "&3Recharger les configurations"
+    r:
+      command: "&7Répondre à un message privé"
+      hover: "&3Répondre à un message privé"
+    setspawn:
+      command: "&7Permet de placer le spawn du monde"
+      hover: "&3Placer le spawn du monde"
+    spawn:
+      command: "&7Permet de se téléporter au spawn du monde"
+      hover: "&3Aller au spawn du monde"
+    time:
+      command: "&7Permet de changer l'heure avec les ticks"
+      hover: "&3Changer l'heure"
+    tnt:
+      command: "&7Vous donne le §cTNTStick"
+      hover: "&3Exploser un joueur"
+    trade:
+      command: "&7Permet d'échanger avec un joueur"
+      hover: "&3Echanger avec un joueur"
+    vanish:
+      command: "&7Permet de se mettre en vanish"
+      hover: "&3Se rendre invisible aux autres joueurs"
+    whois:
+      command: "&7Permet d'afficher les informations d'un joueur"
+      hover: "&3Informations d'un joueur"
+
+#========================================================Permissions===================================================#
+permissions:
+
+  addecon: "&cYous doesn't have the permission to reset the money of player's"
+  #multiessential.eco.add
+
+  alert: "&cVous n'avez pas la permission de faire un message d'alerte"
+  #multiessential.alert
+
+  bc: "&cVous n'avez pas la permission de faire un broadcast"
+  #multiessential.bc
+
+  clear: "&cVous n'avez pas la permission de vider votre inventaire"
+  #multiessential.clear
+
+  chat_color: "&7Vous n'avez pas la permission de parler en couleur dans le chat"
+  #multiessential.chatcolor
+
+  enderchest: "&cVous n'avez pas la permission d'ouvrir l'enderchest d'un autre joueur"
+  #multiessential.ec
+
+  feed: "&cVous n'avez pas la permission de vous nourir"
+  #multiessential.feed
+
+  fly: "&cVous n'avez pas la permission de voler"
+  #multiessential.fly
+
+  freeze: "&cVous n'avez pas la permission de geler un joueur"
+  #multiessential.freeze
+
+  gamemode: "&cVous n'avez pas la permission de changer votre mode de jeu"
+  #multiessential.gamemode
+
+  god: "&cVous n'avez pas la permission de vous mettre en mode dieu"
+  #multiessential.god
+
+  heal: "&cVous n'avez pas la permission de vous soigner"
+  #multiessential.heal
+
+  hat: "&cVous n'avez pas la permission de placer un item sur votre tête"
+  #multiessential.hat
+
+  invsee: "&cVous n'avez pas la permission de voir les inventaires"
+  #multiessential.invsee
+
+  kbstick: "&cVous n'avez pas la permission d'expulser des joueurs"
+  #multiessential.knockback
+
+  suicide: "&cVous n'avez pas la permission de vous sucider en utilisant cette commande"
+  #multiessential.suicide
+
+  lightning: "&cVous n'avez pas la permission de créer des éclairs"
+  #multiessential.lightning
+
+  nick: "&cYou doesn't have the permission to use the nick command"
+  #multiessential.nick
+
+  reload: "&cVous ne pouvez pas recharger les fichiers du plugin"
+  #multiessential.reload
+
+  resetecon: "&cYous doesn't have the permission to reset the money of player's"
+  #multiessential.eco.reset
+
+  removeecon: "&cYous doesn't have the permission to remove the money of player's"
+  #multiessential.eco.remove
+
+  setecon: "&cYous doesn't have the permission to set the money of player's"
+  #multiessential.eco.set
+
+  setspawn: "&cVous n'avez pas la permission de changer le point de spawn"
+  #multiessential.setspawn
+
+  time: "&cVous n'avez pas la permission de changer l'heure du serveur"
+  #multiessential.time
+
+  tnt: "&cVous n'avez pas la permission d'utiliser le tntstick"
+  #multiessential.tnt
+
+  trade: "&cVous n'avez pas la permission d'échanger avec d'autres joueurs"
+  #multiessenssial.trade
+
+  vanish: "&cVous n'avez pas la permission de vous mettre en vanish"
+  #multiessential.vanish
+
+  warn: "&cVous n'avez pas la permission d'avertir des joueurs"
+  #multiessential.warn
+
+  whois: "&cVous n'avez pas la permission d'afficher les informations sur un joueur"
+  #multiessential.whois

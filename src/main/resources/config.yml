@@ -1,0 +1,64 @@
+########################################################################################################################
+#         Developped by                            MultiEssential                                   For personnal      #
+#         CapitaineCat0                            config.yml File                                      server         #
+########################################################################################################################
+#French traduction on GitHub: #
+########################################################################################################################
+#  -Support discord: https://discord.gg/WxcEu7j                                                                        #
+#  -Source SpigotMC of plugin: https://www.spigotmc.org/resources/multiessential.84178/                                #
+#  -GitHub: https://github.com/CapitaineCat0/MultiEssential                                                            #
+#####################################################Variables##########################################################
+#  -{PLAYER} = Player that execute or summon event                                                                     #
+#  -{SENDER} = Player that execute command                                                                             #
+#  -{KILLER} = Player that kill other player (for death messages)                                                      #
+#  -{LOCATION} = Location of player                                                                                    #
+#  -{GAMEMODE} = Gamemode                                                                                              #
+#  -{WORLDNAME} = Main Worldname                                                                                       #
+#  -{TICKS} = Hour ticks                                                                                               #
+########################################################################################################################
+
+#Plugin prefix
+#Leave "" to desactivate it
+prefix: "[&6MultiEssential&r]"
+
+#World name of server
+#By default, the main world are named "world"
+worldname: "world"
+
+
+sounds:
+  #Play sound's on request command or player have permission to execute it
+  request: true
+  #Play sound when player doesn't have permission tu use the command
+  warn: true
+
+#Toggle the weather
+enable_weather: false
+
+serverMOTD:
+  enable: true
+  set: "&aPersonnal server &dusing &6MultiEssential's &bplugin"
+
+tablist:
+  enable: true
+  header: "&6MultiEssential's &aserver header \n &aUsing many lines"
+  footer: "&6MultiEssential's &aserver footer \n &aUsing many lines"
+
+########################################################################################################################
+#                                                                                                                      #
+#                                                    Event's messages                                                  #
+#                                                                                                                      #
+########################################################################################################################
+
+join:
+
+  #Remove op's permissions when player join
+  deop: true
+
+  #Change the player gamemode to survival on join
+  change_gamemode: true
+
+death:
+
+  #Toggle lightning when player died
+  toggle_lightning: true

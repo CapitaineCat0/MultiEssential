@@ -1,0 +1,99 @@
+name: ${project.name}
+version: ${project.version}
+main: ${mainClass}
+api-version: 1.13
+author: ${project.author}
+description: ${project.description}
+website: ${project.url}
+softdepend:
+  - PlaceholderAPI
+commands:
+  admin:
+    description: Open admin inventory
+    aliases: [admininv]
+  alert:
+    description: Send alert message
+  bc:
+    description: Send broadcast
+    aliases: [broadcast]
+  ci:
+    description: Clear inventories
+    aliases: [clear, clearinv, clearinventory]
+  craft:
+    description: Open workbench menu
+    aliases: [workbench]
+  day:
+    description: Set server time to 6am
+  ec:
+    description: Open player's enderchest
+    aliases: [enderchest]
+  feed:
+    description: Feed player's
+  fly:
+    description: Toggle fly-mode
+  freeze:
+    description: Froze player's
+  gm:
+    description: Manage player's gamemode
+    aliases: [gamemode]
+  god:
+    description: Toggle invulnerability
+  heal:
+    description: Heal player's
+  help:
+    description: Show help page
+  hat:
+    description: Place item's and block's on your head
+  invsee:
+    description: Show player's inventories
+  kbstick:
+    description: Gave you the knockback-stick
+  lightning:
+    description: Gave you the lightning-stick
+  list:
+    description: Show a list of connected player's
+  leporte:
+    description: ???
+  me:
+    description: Show informations of MultiEssential
+    aliases: [mess, multie, multiess, multiessential]
+  msg:
+    description: Send private messages
+  midday:
+    description: Set server time to 12pm
+  midnight:
+    description: Set server time to 12am
+  multiessentialhelppage:
+    description: Show specific help page of MultiEssential
+  nick:
+    description: Change your displayname on public server
+  night:
+    description: Set server time to 18pm
+  pl:
+    description: Show plugins
+    aliases: [plugins]
+  r:
+    description: Respond to private messages
+  reload:
+    description: Reload configuration files of MultiEssential
+  suicide:
+    description: Kill yourself
+  spawn:
+    description: Teleport you to the spawn
+  setspawn:
+    description: Set the spawn point
+  serverinfo:
+    description: Show server informations
+  time:
+    description: Manage server time
+  tp:
+    description: Teleport command
+  tnt:
+    description: Gave you the TNT-Stick
+  v:
+    description: Toggle the vanish-mode
+    aliases: [vanish]
+  w:
+    description: Send private messages to player's
+  whois:
+    description: Show player's informations

@@ -1,0 +1,604 @@
+########################################################################################################################
+#         Developped by                            MultiEssential                                   For personnal      #
+#         CapitaineCat0                           language.yml File                                     server         #
+########################################################################################################################
+#French traduction on GitHub: #
+########################################################################################################################
+#  -Support discord: https://discord.gg/WxcEu7j                                                                        #
+#  -Source SpigotMC of plugin: https://www.spigotmc.org/resources/multiessential.84178/                                #
+#  -GitHub: https://github.com/CapitaineCat0/MultiEssential                                                            #
+#####################################################Variables##########################################################
+#  -{PLAYER} = Player that execute or summon event                                                                     #
+#  -{SENDER} = Player that execute command                                                                             #
+#  -{KILLER} = Player that kill other player (for death messages)                                                      #
+#  -{LOCATION} = Location of player                                                                                    #
+#  -{GAMEMODE} = Gamemode                                                                                              #
+#  -{WORLDNAME} = Main Worldname                                                                                       #
+#  -{TICKS} = Hour ticks                                                                                               #
+########################################################################################################################
+
+messages:
+  #Send message to console when the command was typed in it.
+  console: "You must be a player to use that command!"
+
+  #Error message send to player when the mentionned player are not found
+  not_a_player: "&e{PLAYER} &care not found or are not a player"
+
+  #Error message send to player when he dropped a custom item from MultiEssential
+  drop_item: "&cYou cannot drop that item!"
+
+  #Reloaded plugin message
+  reloaded: "&aConfig files reloaded"
+
+  #You can modify the chat syntax on a simple line :)
+  #Also support PlaceholderAPI placeholder's
+  chat_formats:
+    prefix: ""
+    suffix: ""
+    chat_format: "<{PLAYER}> {MESSAGE}"
+
+  #Private messages
+  private:
+    #Message sent to sender
+    #Support {SENDER} and {PLAYER}
+    sender: "&eYou &d> &a{PLAYER} &r: &b{MESSAGE}"
+
+    #Message sent to reciever
+    #Support {SENDER} and {PLAYER}
+    reciever: "&e{SENDER} &d> &aYou &r: &b{MESSAGE}"
+
+    #Error message sent to player when any private's messages are saved
+    error: "&cYou didn't begin conversation with &e{PLAYER}&c!"
+
+  #Error message sent to sender when player are not defined
+  whois_error: "&cType &e&e/whois <player>"
+
+#Message displayed when player type /pl or /plugins command
+plugins: "&cYou can't see what plugins are used"
+
+version: "&cYou can't display server informations"
+
+########################################################################################################################
+#                                                                                                                      #
+#                                                    Event's messages                                                  #
+#                                                                                                                      #
+########################################################################################################################
+
+join:
+
+  #Messages sent to player that joined the server at first time
+  first_time:
+
+    #Server broadcast
+    server: "&e{PLAYER} &ahas joined the server for first time!"
+
+    #Player message
+    player: "&5Welcome &e{PLAYER} &5on our server"
+
+  #Server broadcast when player join
+  server: "&e{PLAYER} joined the server"
+
+  #MOTD message sent to player
+  player: "&3Welcome &b{PLAYER}&3! Have a good time on our server!"
+
+  #List of connected player's
+  connected_players: "&6Connected player's: &c"
+
+  #Help message
+  help_msg: "&6Type &c/me &6to display plugin help"
+
+  list:
+    #List message
+    msg: "&6Type &c/list &6to display connected player's"
+
+leave:
+  #Server broadcast when player leave
+  server: "&e{PLAYER} leave the server"
+
+death:
+  #Server broadcast when player died
+  server: "&7{PLAYER} died"
+
+  #Message sent to dead player
+  player: "&7You die! Maybe another day ..."
+
+  killer:
+    #Server broadcast when player wah killed by player
+    server: "&e{PLAYER} &7was killed by &c{KILLER}"
+    #Death message sent to killer
+    player: "&bYou kill &e{PLAYER}"
+    #Death message sent to victim
+  death_by_player: "&dYou died by &e{KILLER}"
+  #Toggle lightning when player died
+
+
+time:
+  #Message when /day are typed
+  day: "&6Server time set to &c6:00 &6ro &c6 am &6or &c0 ticks &6on &c{WORLDNAME} world"
+
+  #Message when /midday are typed
+  midday: "&6Server time set to &c12:00 &6ro &c12 pm &6or &c6000 ticks &6on &c{WORLDNAME} world"
+
+  #Message when /night are typed
+  night: "&6Server time set to &c18:00 &6ro &c18 pm &6or &c12000 ticks &6on &c{WORLDNAME} world"
+
+  #Message when /midnight are typed
+  midnight: "&6Server time set to &c0:00 &6ro &c0 am &6or &c18000 ticks &6on &c{WORLDNAME} world"
+
+  #Error message sent when arguments are missing
+  error: "&cType &e/time set <ticks>"
+
+  #Message sent when ticks are set
+  set: "&6Server time changed to &e{TICKS} &6ticks"
+
+########################################################################################################################
+#                                                                                                                      #
+#                                                      Commands                                                        #
+#                                                                                                                      #
+########################################################################################################################
+
+#======================================================== Alert =======================================================#
+alert:
+  #Error message sent when arguments are missing
+  error: "&cTapez &3/alert&c &3<arguments> &c!"
+
+  #Alert prefix
+  anounce: "&8[&4&lAlert&8]"
+
+#======================================================= Broadcast ====================================================#
+bc:
+  #Error message sent when arguments are missing.
+  error: "&cType &3/bc&c &3<arguments> &c!"
+
+#========================================================== CI ========================================================#
+clear:
+  #Message sent to player when he cleared inventory
+  player: "&6Your inventory have been cleared"
+
+  other:
+    #Message sent to target player was lost inventory
+    done: "&6Your inventory was cleared by {SENDER}'s"
+
+    #Message sent to player on command sent
+    sender: "&6{PLAYER}'s lost her inventory"
+
+#========================================================= Feed =======================================================#
+feed:
+  #Message sent to player when he are already feeded
+  already: "&6You haven't need to be feeded"
+
+  #Message sent when you are succesfully feeded
+  done: "&6You are feeded"
+
+  #Message sent when target are succesfully feeded
+  sender: "&6You feed &e{PLAYER}"
+
+  other:
+    #Message sent when target player are already feeded
+    already: "&e{PLAYER} &6haven't need to by feeded"
+
+    #Message sent at target when he has succesfully feeded
+    done: "&6You've been feeded by &e{SENDER}"
+
+#======================================================= Fly-mode =====================================================#
+fly:
+  #Message sent to player when he toggle the Fly-mode
+  #Fly-mode active
+  active: "&6Fly-mode &aactive"
+
+  #Fly-mode inactive
+  inactive: "&6Fly-mode &cinactive"
+
+  #Error message sent when player are not operator/admin
+  error: "You doesn't have the permission to toggle the other player's fly-mode"
+
+  sender:
+    #Message sent when player toggle the Fly-mode to other player
+    #Fly-mode active
+    active: "&6Fly-mode &aactive &6for &e{PLAYER}"
+
+    #Fly-mode inactive
+    inactive: "&6Fly-mode &cinactive &6for &e{PLAYER}"
+
+  other:
+    #Message sent to target when sender toggle the Fly-mode for him
+    #Fly-mode active
+    active: "&6Your fly-mode are &aactivated &6by &e{SENDER}"
+
+    #Fly-mode inactive
+    inactive: "&6Your fly-mode are &cinactivated &6by &e{SENDER}"
+
+#======================================================== Freeze ======================================================#
+freeze:
+  #Messages sent to player that froze player's
+  sender:
+    #Message sent when target are frozen
+    frozen: "&6You froze &e{PLAYER}&6! Now he can't move"
+
+    #Message sent when target are unfrozen
+    unfrozen: "&6You unfroze &e{PLAYER}&6! Now he can move"
+
+  #Messages sent to frozen player
+  target:
+    #Message sent to player when he break blocks
+    break_block: "&cYou can't break blocks when you're froze!"
+
+    #Message sent to player when he place blocks
+    place_block: "&cYous can't place blocks when you're froze!"
+
+    #Message sent to player when he drop items
+    item_drop: "&cYou can't drop items when you're froze!"
+
+    #Message sent to player when he pickup items
+    item_pickup: "&cYou can't pickup items when you're froze!"
+
+    #Message sent to target when he are froze
+    frozen: "&cYou're been froze by &e{PLAYER}&c!"
+
+    #Message sent to target when he try to move
+    #/!\ You can't use the player's variables {PLAYER} or {SENDER}!
+    move: "&c&cYou're been froze by a staff member! You can't move!"
+
+    #Message sent to target when he are unfroze
+    unfrozen: "&aYou're been unfroze by &e{SENDER}&a! Now you can play with other player's :)"
+
+#======================================================== Gamemode ====================================================#
+gamemode:
+  other:
+    #Message sent to target when his gamemode are changed by a player
+    done: "&6Your gamemode have been updated by &e{SENDER} &6to {GAMEMODE}"
+
+    #Message sent to sender when the gamemode of target was changed
+    sender: "&6You update the gamemode of &e{PLAYER} &6on {GAMEMODE}"
+
+  #Error message sent when arguments are missing
+  error: "&cType &e/gm &cor &e/gamemode <1|2|3> [player] &cto update your|player's gamemode.
+  You can also use &e/gm <s|c|a|spec> &cor &e/gamemode <survival|creative|adventure|spectator>&c."
+
+  #Message sent when the gamemode are updated
+  general: "&6Your gamemode have been updated to {GAMEMODE}"
+
+  #Gamemodes list:
+  survival: "&r[&csurvival&r]"
+  creative: "&r[&ccréativ&r]"
+  adventure: "&r[&cadventure&r]"
+  spectator: "&r[&cspectator&r]"
+
+#======================================================== God-mode ====================================================#
+god:
+  #Message sent to player when he toggle the God-mode
+  #God-mode active
+  active: "&6God-mode &aactive"
+
+  #God-mode inactive
+  inactive: "&6God-mode &cinactive"
+
+  sender:
+    #Message sent to player when he toggle the God-mode of target
+    #God-mode active
+    active: "&6God-mode &aactivated &6for &e{PLAYER}"
+
+    #God-mode inactive
+    inactive: "&6God-mode &cinactivated &6for &e{PLAYER}"
+
+  other:
+    #Message sent to target when the God-mode have been toggled by player
+    #God-mode active
+    active: "&6God-mode &aactivated &6by &e{SENDER}"
+
+    #God-mode inactive
+    inactive: "&6God-mode &cinactivated &6by &e{SENDER}"
+
+#========================================================== Hat =======================================================#
+hat:
+  #Message sent to player when he place item in head
+  done: "&6You place item in your head"
+
+#========================================================= Heal =======================================================#
+heal:
+  #Message sent to player when he are already healed
+  already: "&6You're already be healed"
+
+  #Message sent when you are succesfully healed
+  done: "§6You've been healed"
+
+  #Message sent when you heal target
+  sender: "&6You &aheal &e{PLAYER}"
+
+  other:
+    #Message sent when you heal an already healed player
+    already: "&e{PLAYER} &6has already been healed"
+
+    #Message sent when you succesfully healed target
+    done: "&6You've been healed by &e{SENDER}"
+
+#======================================================== Invsee ======================================================#
+invsee:
+  #Error message sent when arguments are missing
+  error: "&cType &e/invsee <player> &cto see player's inventory"
+
+  #Message sent when you opened player's inventory
+  done: "&6You opened &e{PLAYER}'s &6inventory."
+
+#======================================================= Suicide ======================================================#
+#Message sent to player when he died by suicide
+suicide: "&eYou died by yourself"
+
+#========================================================= Nick =======================================================#
+nick:
+  #Error message sent when arguments are missing
+  error: "&cType &e/nick <nickname>"
+
+  #Message sent when the nickname are set
+  set: "&6Your nickname has been set to &c{NICKNAME}"
+
+#===================================================== Teleportation ==================================================#
+teleportation:
+  spawn:
+    #Message sent when spawn location have been set
+    set: "&6You place the spawn point at your location &r(&c{LOCATION}&r)"
+
+    #Message sent when player's have been teleported to spawn
+    done: "&aYou've been teleported at spawn!"
+
+  tp:
+    #All messages for teleport to player's / coordinates
+    error:
+      #Error message sent when arguments are missing
+      error: "&cType &e/tp <player> <otherplayer> &cor &e/tp <x> <y> <z> <player>"
+
+      #Error message sent when you type invalid coordinates
+      coordinates: "&cInvalid coordinates!"
+
+    #Message sent when you teleport you to other player
+    self: "&6Teleported to &e{PLAYER}"
+
+    other:
+      #Messages sent when you teleport other player's
+      sender:
+
+        #Message sent when you teleport other player's to coordinates
+        done: "&6Teleported &c{PLAYER} &6to &e{LOCATION}&6."
+
+        #Message sent to target when he's been teleported
+       player_to_other: "You were teleported to &e{PLAYER} &aby &e{SENDER}"
+
+         #Message sent to you when you teleport other player's to player's
+         #/!\ {PLAYER1} and {PLAYER2} work only with this command!
+        player_to_other_done: "&aTeleported &b{PLAYER1} &ato &e{PLAYER2}"
+
+      #Message sent to target when he's teleported to coordinates
+      done: "&aYou were teleported to &e{LOCATION} &aby &e{SENDER}"
+
+#======================================================= Trade ========================================================#
+trade:
+  sender:
+    #Message sent to sender of trade request
+    sent: "&bYou sent a trade request to &e{PLAYER}"
+
+  reciever:
+    #Message sent to reciever of trade request
+    message: "&bYou recieved trade request from &e{SENDER}&b! Type &e/trade <yes|accept> &bto accept"
+
+  #Error message sent when arguments are missing
+  error: "&cType &e/trade <player>"
+
+  #Inventory name
+  inventory_name: "&bPlayer trade"
+
+  #Message sent when trade was accepted
+  accepted: "&aTrade request accepted"
+
+#======================================================= vanish =======================================================#
+vanish:
+  #Message sent when player are vanished
+  enabled: "&7Vanish &aactive"
+
+  #Message sent when player are remove vanish-mode
+  disabled: "&7Vanish &cinactive"
+
+#======================================================== Help ========================================================#
+help:
+  #Plugin description when you type /me or /mess or /multie or /multiess or /multiessential
+  descriptions:
+    name: "§eName§8:"
+    author: "§bAuthor§8:"
+    version: "§aVersion§8:"
+    prefix: "§6Prefix§8:"
+    discord: "§3Discord§8:"
+    website: "§eSite§8:"
+
+  #Next page
+  next_page: "&7&lNext page &a&l->"
+  #Previous page
+  previous_page: "&a&l<- &7&lPrevious page"
+
+  commands:
+    alert:
+      #Help message showed when you type /me help
+      command: "&7Send alert messages to server"
+      #Message showed when your mouse are hover the descriptions
+      hover: "&3Send alert"
+    bc:
+      command: "&7Send a broadcast"
+      hover: "&3Send a broadcast"
+    clear:
+      command: "&7Clear player's inventory"
+      hover: "&3Clear inventory"
+    craft:
+      command: "&7Open workbench inventory"
+      hover: "&3Workbenck"
+    day:
+      command: "&7Update server time to 6am"
+      hover: "&3Time update"
+    enderchest:
+      command: "&7Display player's enderchest"
+      hover: "&3Display enderchest"
+    feed:
+      command: "&7Feed player's"
+      hover: "&3Feed player's"
+    fly:
+      command: "&7Toggle the fly-mode for player's"
+      hover: "&3Toggle fly-mode"
+    freeze:
+      command: "&eFroze&7/&eunfroze&7 player's"
+      hover: "&3froze player's"
+    gamemode:
+      command: "&7Manage player's gamemode"
+      hover: "&3Update gamemode"
+    god:
+      command: "&7Toggle player's god-mode"
+      hover: "&3Toggle god-mode"
+    hat:
+      command: "&7Place item's on your head"
+      hover: "&3Place item's on your head"
+    heal:
+      command: "&7Heal player's"
+      hover: "&3Heal player's"
+    help:
+      command: "&7Display help embed"
+      hover: "&3Show help"
+    invsee:
+      command: "&7Display the player's inventory"
+      hover: "&3Display player's inventory"
+    kbstick:
+      command: "&7Give you the knockback-stick"
+      hover: "&3Give the knockback-stick"
+    suicide:
+      command: "&7Suicide"
+      hover: "&3Suicide"
+    lightning:
+      command: "&7Give you the lightning-stick"
+      hover: "&3Give the lightning-stick"
+    list:
+      command: "&7Show connected players"
+      hover: "&3Show connected players"
+    midday:
+      command: "&7Update server time to 12pm"
+      hover: "&3Time update"
+    midnight:
+      command: "&7Update server time to 18pm"
+      hover: "&3Time update"
+    msg:
+      command: "&7Send private messages to other player"
+      hover: "&3Private messages"
+    nick:
+      command: "&7Change your name"
+      hover: "&3Set your nickname"
+    night:
+      command: "&7Update server time to 0am"
+      hover: "&3Time update"
+    reload:
+      command: "&7Reload plugin configurations"
+      hover: "&3Reload MultiEssential"
+    r:
+      command: "&7Respond to private messages"
+      hover: "&3Respond to private messages"
+    setspawn:
+      command: "&7Set the main world spawn"
+      hover: "&3Set the main spawn point"
+    spawn:
+      command: "&7Teleport you to main world spawn"
+      hover: "&3Aller au spawn du monde"
+    time:
+      command: "&7Update server time with ticks"
+      hover: "&3Time update"
+    tnt:
+      command: "&7Give you the TNT-stick"
+      hover: "&3Explode the world"
+    trade:
+      command: "&7Trade with player's"
+      hover: "&3Trade with player's"
+    vanish:
+      command: "&7Toggle the vanish-mode"
+      hover: "&3Toggle the vanish-mode"
+    whois:
+      command: "&7Show player's informations"
+      hover: "&3Player's informations"
+
+#===================================================== Permissions ====================================================#
+permissions:
+
+  addecon: "&cYous doesn't have the permission to reset the money of player's"
+  #multiessential.eco.add
+
+  alert: "&cYou doesn't have the permission to use the alert command"
+  #multiessential.alert
+
+  bc: "&cYou doesn't have the permission to use the broadcast command"
+  #multiessential.bc
+
+  clear: "&cYou doesn't have the permission to use the clear command"
+  #multiessential.clear
+
+  chat_color: "&7You doesn't have the permission to use the chat color"
+  #multiessential.chatcolor
+
+  enderchest: "&cYou doesn't have the permission to use the enderchest"
+  #multiessential.ec
+
+  feed: "&cYou doesn't have the permission to use the feed command"
+  #multiessential.feed
+
+  fly: "&cYou doesn't have the permission to use the fly command"
+  #multiessential.fly
+
+  freeze: "&cYou doesn't have the permission to use the freeze command"
+  #multiessential.freeze
+
+  gamemode: "&cYou doesn't have the permission to use the gamemode command"
+  #multiessential.gamemode
+
+  god: "&cYou doesn't have the permission to use the god command"
+  #multiessential.god
+
+  heal: "&cYou doesn't have the permission to use the heal command"
+  #multiessential.heal
+
+  hat: "&cYou doesn't have the permission to use the hat command"
+  #multiessential.hat
+
+  invsee: "&cYou doesn't have the permission to use the invsee command"
+  #multiessential.invsee
+
+  kbstick: "&cYou doesn't have the permission to use the kbstick command"
+  #multiessential.knockback
+
+  serverinfo: "&cYou doesn't have the permission to show server informations"
+  #multiessential.serverinfo
+
+  suicide: "&cYou doesn't have the permission to use the suicide command"
+  #multiessential.suicide
+
+  lightning: "&cYou doesn't have the permission to use the lightning command"
+  #multiessential.lightning
+
+  nick: "&cYou doesn't have the permission to use the nick command"
+  #multiessential.nick
+
+  reload: "&cYou doesn't have the permission to use the reload command"
+  #multiessential.reload
+
+  setspawn: "&cYou doesn't have the permission to use the setspawn command"
+  #multiessential.setspawn
+
+  time: "&cYou doesn't have the permission to use the time commands"
+  #multiessential.time
+
+  tnt: "&cYou doesn't have the permission to use the tnt command"
+  #multiessential.tnt
+
+  tp: "&cYou doesn't have the permission to use teleportation's command"
+  #multiessential.tp
+
+  trade: "&cYou doesn't have the permission to use the trade command"
+  #multiessenssial.trade
+
+  vanish: "&cYou doesn't have the permission to use the vanish command"
+  #multiessential.vanish
+
+  warn: "&cYou doesn't have the permission to use the warn command"
+  #multiessential.warn
+
+  whois: "&cYou doesn't have the permission to use the whois command"
+  #multiessential.whois
